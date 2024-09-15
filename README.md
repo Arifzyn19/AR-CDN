@@ -77,8 +77,8 @@ Contributions are welcome! If you'd like to contribute, please follow these step
 For more details, see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 ## Thanks To
-~~~
-
+- [`ClayzaAubert`](https://github.com/ClayzaAubert)
+  
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
