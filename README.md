@@ -1,44 +1,5 @@
-# Proyek Anda
-
-Deskripsi singkat tentang proyek ini.
-
-## Struktur Direktori
-
-- `dist/`
-  - `index.js`: Berkas hasil build dari TypeScript.
-
-- `package-lock.json`: Berkas kunci dependensi npm.
-
-- `package.json`: Berkas konfigurasi npm yang mencantumkan dependensi dan skrip proyek.
-
-- `public/`
-  - `api/`
-    - `openapi.json`: Berkas dokumentasi OpenAPI.
-
-  - `assets/`
-    - `script.js`: Berkas JavaScript untuk halaman web.
-    - `style.css`: Berkas CSS untuk halaman web.
-
-- `src/`
-  - `index.ts`: Berkas sumber utama TypeScript.
-
-- `tsconfig.json`: Konfigurasi TypeScript.
-
-- `uploads/`
-  - `Dwp5Rs01.svg`: Berkas SVG yang diunggah.
-  - `QRCODE-WDP-1726314320-FEVGYLF5PB4ZWT6.png`: Berkas PNG yang diunggah.
-  - `ms-icon-310x310 (1).png`: Berkas PNG ikon.
-
-- `views/`
-  - `docs.jmk`: Berkas template untuk dokumen.
-  - `index.jmk`: Berkas template untuk halaman utama.
-  - `layouts/`
-    - `main.jmk`: Berkas template layout utama.
-  - `partials/`
-    - `footer.jmk`: Berkas template untuk footer.
-    - `header.jmk`: Berkas template untuk header.
-    - `main.jmk`: Berkas template untuk bagian utama.
-  - `result.jmk`: Berkas template untuk hasil.
+## AR - CDN 
+AR CDN Adalah source code gratis untuk upload file seperti, image, video dan audio.
 
 ## Instalasi
 
