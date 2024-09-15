@@ -5,11 +5,11 @@ AR CDN Adalah source code gratis untuk upload file seperti, image, video dan aud
 
 1. Clone repositori ini:
    ```bash
-   git clone <URL_REPOSITORI>  
+   git clone https://github.com/Arifzyn19/AR-CDN  
    ```
 2. Arahkan ke direktori proyek:
    ```bash
-   cd <NAMA_PROYEK>   
+   cd AR-CDN
    ```
 3. Instal dependensi:   
    ```bash
