@@ -33,7 +33,6 @@ uploads/
 Thumbs.db
 
 # Compiled files
-*.js
 *.map
 
 # Typescript build
