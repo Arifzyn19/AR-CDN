@@ -1,0 +1,48 @@
+<main id="result">
+  <div class="upload-area" id="uploadArea">
+    <h1>File Actions</h1>
+    <div id="filePreview">
+      {{#if fileUrl}}
+        {{#if (includes fileUrl '.mp4')}}
+          <video src="{{fileUrl}}" width="150" controls></video>
+        {{else if (includes fileUrl '.jpg')}}
+          <img src="{{fileUrl}}" width="150" alt="File Preview">
+        {{else if (includes fileUrl '.jpeg')}}
+          <img src="{{fileUrl}}" width="150" alt="File Preview">
+        {{else if (includes fileUrl '.png')}}
+          <img src="{{fileUrl}}" width="150" alt="File Preview">
+        {{else if (includes fileUrl '.gif')}}
+          <img src="{{fileUrl}}" width="150" alt="File Preview">
+        {{else if (includes fileUrl '.mp3')}}
+          <audio src="{{fileUrl}}" controls></audio>
+        {{else if (includes fileUrl '.wav')}}
+          <audio src="{{fileUrl}}" controls></audio>
+        {{else}}
+          <img src="https://telegra.ph/file/8acbc9aa6ef4a64595c24.jpg" width="150" alt="Default Preview">
+        {{/if}}
+      {{/if}}
+    </div>
+    <br>
+    <button onclick="copyLink('{{fileUrl}}')">Copy Link</button>
+    <button onclick="window.open('{{fileUrl}}')">Open File</button>
+  </div>
+</main>
+
+<script>
+  function copyLink(url) {
+    const textarea = document.createElement('textarea');
+    textarea.value = url;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = 'Link telah berhasil disalin ke clipboard.';
+    document.body.appendChild(notification);
+    setTimeout(() => {
+      notification.style.display = 'none';
+    }, 3000);
+  }
+</script>

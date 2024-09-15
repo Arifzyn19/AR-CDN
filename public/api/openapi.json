@@ -1,0 +1,77 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "File Upload API",
+    "version": "1.0.0",
+    "description": "API for uploading files"
+  },
+  "paths": {
+    "/api/upload": {
+      "post": {
+        "summary": "Upload a file",
+        "description": "Upload a file and return details including filename, size, and URL",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The file to upload"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "File uploaded successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "filename": {
+                      "type": "string",
+                      "description": "The name of the uploaded file"
+                    },
+                    "size": {
+                      "type": "integer",
+                      "description": "The size of the uploaded file in bytes"
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "The URL to access the uploaded file",
+                      "example": "/data/example-file.jpg"
+                    }
+                  },
+                  "required": ["filename", "size", "url"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "No file uploaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "No file uploaded"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 

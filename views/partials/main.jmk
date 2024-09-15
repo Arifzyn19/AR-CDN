@@ -1,0 +1,14 @@
+<main>
+  <section class="upload-container">
+    <h1>AR File Hosting</h1>
+    <p class="subtitle">Upload and manage your media files with ease</p>
+    <div class="upload-area" id="drop-area">
+      <h3>Drag & Drop your files here</h3>
+      <button id="chooseFile" class="upload-btn">📂 Choose File</button>
+      <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="input" style="display: none;">
+      </form>
+      <div id="uploading" class="uploading">Uploading...</div>
+    </div>
+  </section>
+</main>

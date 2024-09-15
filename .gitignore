@@ -1,0 +1,53 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript
+*.tsbuildinfo
+
+# Output directories
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Uploads
+uploads/
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Public assets
+public/assets/
+
+# Compiled files
+*.js
+*.map
+
+# Typescript build
+*.tsbuildinfo
+
+# OS generated files
+*.swp
+*.swo
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Prettier
+.prettierignore 
