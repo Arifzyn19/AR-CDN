@@ -32,9 +32,6 @@ uploads/
 .DS_Store
 Thumbs.db
 
-# Public assets
-public/assets/
-
 # Compiled files
 *.js
 *.map
