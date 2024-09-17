@@ -5,6 +5,7 @@ Deskripsi singkat tentang proyek ini.
 ## Struktur Direktori
 
 - `dist/`
+
   - `index.js`: Berkas hasil build dari TypeScript.
 
 - `package-lock.json`: Berkas kunci dependensi npm.
@@ -12,7 +13,9 @@ Deskripsi singkat tentang proyek ini.
 - `package.json`: Berkas konfigurasi npm yang mencantumkan dependensi dan skrip proyek.
 
 - `public/`
+
   - `api/`
+
     - `openapi.json`: Berkas dokumentasi OpenAPI.
 
   - `assets/`
@@ -20,11 +23,13 @@ Deskripsi singkat tentang proyek ini.
     - `style.css`: Berkas CSS untuk halaman web.
 
 - `src/`
+
   - `index.ts`: Berkas sumber utama TypeScript.
 
 - `tsconfig.json`: Konfigurasi TypeScript.
 
 - `uploads/`
+
   - `Dwp5Rs01.svg`: Berkas SVG yang diunggah.
   - `QRCODE-WDP-1726314320-FEVGYLF5PB4ZWT6.png`: Berkas PNG yang diunggah.
   - `ms-icon-310x310 (1).png`: Berkas PNG ikon.
@@ -44,18 +49,18 @@ Deskripsi singkat tentang proyek ini.
 
 1. Clone repositori ini:
    ```bash
-   git clone <URL_REPOSITORI>  
+   git clone <URL_REPOSITORI>
    ```
 2. Arahkan ke direktori proyek:
    ```bash
-   cd <NAMA_PROYEK>   
+   cd <NAMA_PROYEK>
    ```
-3. Instal dependensi:   
+3. Instal dependensi:
    ```bash
-   npm install 
+   npm install
    ```
 
-## Penggunaan    
+## Penggunaan
 
 1. Jalankan server pengembangan:
    ```bash
@@ -77,8 +82,9 @@ Contributions are welcome! If you'd like to contribute, please follow these step
 For more details, see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 ## Thanks To
+
 - [`ClayzaAubert`](https://github.com/ClayzaAubert)
-  
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

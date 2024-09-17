@@ -4,15 +4,48 @@
   href="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css">
 <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
 <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
-  <script>
-    SwaggerUIBundle({
-      url: '/api/openapi.json',
-      dom_id: '#swagger-ui',
-      presets: [
-        SwaggerUIBundle.presets.apis,
-        SwaggerUIStandalonePreset
-      ],
-      layout: 'BaseLayout',
-      deepLinking: true, 
-    });
-  </script>
+<script>
+  SwaggerUIBundle({
+    url: '/api/openapi.json',
+    dom_id: '#swagger-ui',
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ],
+    layout: 'BaseLayout',
+    deepLinking: true, 
+  });
+</script>
+<style> 
+  html {
+    box-sizing: border-box;
+    overflow-y: scroll;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    color: white;
+    text-decoration: none;
+  }
+
+  .swagger-ui .topbar .download-url-wrapper {
+    display: none;
+  }
+</style>
