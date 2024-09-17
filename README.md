@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Proyek Anda
 
 Deskripsi singkat tentang proyek ini.
@@ -44,16 +45,28 @@ Deskripsi singkat tentang proyek ini.
     - `header.jmk`: Berkas template untuk header.
     - `main.jmk`: Berkas template untuk bagian utama.
   - `result.jmk`: Berkas template untuk hasil.
+=======
+## AR - CDN 
+AR CDN Adalah source code gratis untuk upload file seperti, image, video dan audio.
+>>>>>>> 83a636ede5d9ed14da1263dea9b0dacf94d22711
 
 ## Instalasi
 
 1. Clone repositori ini:
    ```bash
+<<<<<<< HEAD
    git clone <URL_REPOSITORI>
    ```
 2. Arahkan ke direktori proyek:
    ```bash
    cd <NAMA_PROYEK>
+=======
+   git clone https://github.com/Arifzyn19/AR-CDN  
+   ```
+2. Arahkan ke direktori proyek:
+   ```bash
+   cd AR-CDN
+>>>>>>> 83a636ede5d9ed14da1263dea9b0dacf94d22711
    ```
 3. Instal dependensi:
    ```bash
