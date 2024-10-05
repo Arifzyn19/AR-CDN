@@ -1,1 +1,158 @@
-{{> main}} 
+<main class="flex items-center justify-center min-h-screen p-6 bg-gray-900">
+  <div class="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6">
+    <h2 class="text-3xl font-bold text-gray-100 text-center mb-6">Upload File</h2>
+     
+    <div id="notification-container" class="mt-4"></div>
+    
+    <div id="uploadArea" class="border-2 border-dashed border-gray-500 p-6 mt-6 rounded-lg">
+      <h1 class="text-lg font-semibold text-center text-gray-100">Drag and Drop Files Here or Click Below to Select</h1>
+      <button id="chooseFile" class="bg-blue-600 text-white p-2 rounded mt-4 w-full hover:bg-blue-700">Choose File</button>
+      <input type="file" id="input" class="hidden" required />
+      <div id="drop-area" class="mt-4 p-4 border border-gray-500 rounded text-center">
+        <p class="text-gray-400">Drop your files here...</p>
+      </div>
+      <div id="uploading" class="hidden mt-2 text-gray-400 text-center">Uploading...</div>
+    </div>
+  </div>
+</main>
+
+<script>
+    // Handle file selection and upload
+    document.getElementById("chooseFile").addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("input").click();
+    });
+
+    document.getElementById("input").addEventListener("change", async (event) => {
+        const maxFileSize = 5 * 1024 * 1024; // 5MB
+        const file = event.target.files[0];
+
+        if (file && file.size > maxFileSize) {
+            createNotification("Ukuran file melebihi batas maksimum 5MB.");
+            document.getElementById("input").value = "";
+            document.getElementById("uploading").style.display = "none";
+        } else if (file) {
+            const formData = new FormData();
+            formData.append("file", file);
+            document.getElementById("uploading").style.display = "block";
+
+            try {
+                const response = await fetch("/api/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    createNotification(result.error || "Terjadi kesalahan saat mengupload file.");
+                    document.getElementById("uploading").style.display = "none";
+                } else {
+                    createNotification("File berhasil diupload.");
+                    window.location.href = `/data/${result.data.filename}`;
+                }
+            } catch (error) {
+                console.error(error);
+                createNotification("Gagal menghubungi server.");
+                document.getElementById("uploading").style.display = "none";
+            }
+        }
+    });
+
+    const dropArea = document.getElementById("drop-area");
+    dropArea.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        dropArea.classList.add("dragover");
+    });
+
+    dropArea.addEventListener("dragleave", () => {
+        dropArea.classList.remove("dragover");
+    });
+
+    dropArea.addEventListener("drop", async (event) => {
+        event.preventDefault();
+        dropArea.classList.remove("dragover");
+        const files = event.dataTransfer.files;
+
+        if (files.length > 0) {
+            const file = files[0];
+            const maxFileSize = 5 * 1024 * 1024; // 5MB
+
+            if (file.size > maxFileSize) {
+                createNotification("Ukuran file melebihi batas maksimum 5MB.");
+                document.getElementById("uploading").style.display = "none";
+            } else {
+                const formData = new FormData();
+                formData.append("file", file);
+                document.getElementById("uploading").style.display = "block";
+
+                try {
+                    const response = await fetch("/api/upload", {
+                        method: "POST",
+                        body: formData,
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        createNotification(result.error || "Terjadi kesalahan saat mengupload file.");
+                        document.getElementById("uploading").style.display = "none";
+                    } else {
+                        createNotification("File berhasil diupload.");
+                        window.location.href = `/data/${result.data.filename}`;
+                    }
+                } catch (error) {
+                    console.error(error);
+                    createNotification("Gagal menghubungi server.");
+                    document.getElementById("uploading").style.display = "none";
+                }
+            }
+        }
+    });
+
+    function createNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'notification bg-green-200 text-green-800 p-2 rounded mb-2';
+        notification.textContent = message;
+        document.getElementById('notification-container').appendChild(notification);
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    function showFilePreview(fileUrl) {
+        const resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = `
+            <div class="upload-area">
+                <h1>File Actions</h1>
+                <div id="filePreview">
+                    ${getFilePreviewHTML(fileUrl)}
+                </div>
+                <br>
+                <button onclick="copyLink('${fileUrl}')" class="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Copy Link</button>
+                <button onclick="window.open('${fileUrl}')" class="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">Open File</button>
+            </div>
+        `;
+    }
+
+    function getFilePreviewHTML(fileUrl) {
+        const ext = fileUrl.split('.').pop().toLowerCase();
+        if (['mp4', 'mp3', 'wav'].includes(ext)) {
+            return `<audio src="${fileUrl}" controls></audio>`;
+        } else if (['jpg', 'jpeg', 'png', 'gif'].includes(ext)) {
+            return `<img src="${fileUrl}" width="150" alt="File Preview">`;
+        }
+        return `<img src="https://telegra.ph/file/8acbc9aa6ef4a64595c24.jpg" width="150" alt="Default Preview">`;
+    }
+
+    function copyLink(url) {
+        const textarea = document.createElement('textarea');
+        textarea.value = url;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+        createNotification('Link telah berhasil disalin ke clipboard.');
+    }
+</script>

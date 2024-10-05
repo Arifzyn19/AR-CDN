@@ -1,19 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>File Upload - AR Hosting</title>
-  <link rel="stylesheet" href="/assets/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload - AR Hosting</title>
+
+    <!-- Meta Content -->
+    <meta name="description" content="Upload and manage your files easily with AR Hosting. Enjoy a seamless file management experience.">
+    <meta name="keywords" content="file upload, AR Hosting, AR CDN, cloud storage, file management, online file storage, secure file upload">
+    <meta name="author" content="Arifzyn">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="File Upload - AR Hosting">
+    <meta property="og:description" content="Upload and manage your files easily with AR Hosting.">
+    <meta property="og:image" content="/images/logo.jpg"> <!-- Replace with your actual OG image URL -->
+    <meta property="og:url" content="https://cdn.arifzyn.tech">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="File Upload - AR Hosting">
+    <meta name="twitter:description" content="Upload and manage your files easily with AR Hosting.">
+    <meta name="twitter:image" content="/images/logo.jpg"> 
+    
+    <!-- Favicon and Icons --> 
+    <link rel="icon" type="image/png" href="/images/favicon-48x48.png" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="manifest" href="/images/site.webmanifest" />
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #1F2937; 
+            color: #D1D5DB; 
+        }
+        .upload-container {
+            transition: transform 0.2s;
+        }
+        .upload-container:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
-  {{> header}} 
-
-  {{{body}}}   
-
-  {{> footer}}
-
-  <script src="/assets/script.js"></script>
+    {{> header}}
+    
+    {{{body}}}
+  
+    {{> footer}}
+  
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </body>
 </html>

@@ -1,3 +1,5 @@
-<footer>
-  <p>&copy; 2024 AR Hosting. All rights reserved. | <a href="/terms">Terms</a> | <a href="/privacy">Privacy</a></p>
+<footer class="bg-gray-800 p-4 mt-8">
+    <div class="container mx-auto text-center">
+        <p class="text-white">© 2024 AR Hosting. All rights reserved.</p>
+    </div>
 </footer>

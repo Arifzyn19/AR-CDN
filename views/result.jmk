@@ -1,30 +1,39 @@
-<main id="result">
-  <div class="upload-area" id="uploadArea">
-    <h1>File Actions</h1>
-    <div id="filePreview">
+<main id="result" class="flex items-center justify-center min-h-screen p-6">
+  <div class="upload-area bg-gray-700 shadow-2xl border border-gray-600 rounded-lg p-6 w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-4 text-white">File Actions</h1>
+    <div id="filePreview" class="mb-4">
       {{#if fileUrl}}
         {{#if (includes fileUrl '.mp4')}}
-          <video src="{{fileUrl}}" width="150" controls></video>
+          <video src="{{fileUrl}}" class="w-3/4 mx-auto rounded" controls></video>
         {{else if (includes fileUrl '.jpg')}}
-          <img src="{{fileUrl}}" width="150" alt="File Preview">
+          <img src="{{fileUrl}}" class="w-3/4 mx-auto rounded" alt="File Preview">
         {{else if (includes fileUrl '.jpeg')}}
-          <img src="{{fileUrl}}" width="150" alt="File Preview">
+          <img src="{{fileUrl}}" class="w-3/4 mx-auto rounded" alt="File Preview">
         {{else if (includes fileUrl '.png')}}
-          <img src="{{fileUrl}}" width="150" alt="File Preview">
+          <img src="{{fileUrl}}" class="w-3/4 mx-auto rounded" alt="File Preview">
         {{else if (includes fileUrl '.gif')}}
-          <img src="{{fileUrl}}" width="150" alt="File Preview">
+          <img src="{{fileUrl}}" class="w-3/4 mx-auto rounded" alt="File Preview">
         {{else if (includes fileUrl '.mp3')}}
-          <audio src="{{fileUrl}}" controls></audio>
+          <audio src="{{fileUrl}}" controls class="w-3/4 mx-auto rounded"></audio>
         {{else if (includes fileUrl '.wav')}}
-          <audio src="{{fileUrl}}" controls></audio>
+          <audio src="{{fileUrl}}" controls class="w-3/4 mx-auto rounded"></audio>
         {{else}}
-          <img src="https://telegra.ph/file/8acbc9aa6ef4a64595c24.jpg" width="150" alt="Default Preview">
+          <img src="https://telegra.ph/file/8acbc9aa6ef4a64595c24.jpg" class="w-3/4 mx-auto rounded" alt="Default Preview">
         {{/if}}
       {{/if}}
     </div>
-    <br>
-    <button onclick="copyLink('{{fileUrl}}')">Copy Link</button>
-    <button onclick="window.open('{{fileUrl}}')">Open File</button>
+    <div class="flex justify-between">
+      <button 
+        onclick="copyLink('{{fileUrl}}')" 
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+        Copy Link
+      </button>
+      <button 
+        onclick="window.open('{{fileUrl}}')" 
+        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition ml-2">
+        Open File
+      </button>
+    </div>
   </div>
 </main>
 
@@ -38,7 +47,7 @@
     document.body.removeChild(textarea);
 
     const notification = document.createElement('div');
-    notification.className = 'notification';
+    notification.className = 'notification bg-green-500 text-white p-2 rounded absolute top-0 right-0 m-4';
     notification.textContent = 'Link telah berhasil disalin ke clipboard.';
     document.body.appendChild(notification);
     setTimeout(() => {

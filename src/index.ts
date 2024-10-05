@@ -45,7 +45,7 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 },
 });
 
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+app.use("/f", express.static(path.join(__dirname, "../uploads")));
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/", (req: Request, res: Response) => {
@@ -71,7 +71,7 @@ app.get("/data/:filename", (req: Request, res: Response) => {
   if (fs.existsSync(filePath)) {
     res.render("result", {
       title: "File Result | AR CDN",
-      fileUrl: `${req.protocol}://${req.get("host")}/uploads/${filename}`,
+      fileUrl: `${req.protocol}://${req.get("host")}/f/${filename}`,
       filename,
     });
   } else {
@@ -87,6 +87,8 @@ app.post(
       return res.status(400).json({ error: "No file uploaded" });
     }
 
+    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+    
     res.json({
       status: 200,
       creator: "Arifzyn.",
@@ -95,7 +97,7 @@ app.post(
         filename: req.file.filename,
         mimetype: req.file.mimetype,
         size: req.file.size,
-        url: `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`,
+        url: `${protocol}://${req.get("host")}/f/${req.file.filename}`,
       },
     });
   },
