@@ -115,23 +115,41 @@ function createNotification(message) {
 }
 
 function copyLink(url) {
-  const textarea = document.createElement('textarea');
-  textarea.value = url;
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand('copy');
-  document.body.removeChild(textarea);
-  createNotification('Link telah berhasil disalin ke clipboard.');
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url).then(() => {
+      createNotification('Link telah berhasil disalin ke clipboard.');
+    }).catch(err => {
+      console.error('Gagal menyalin: ', err);
+    });
+  } else {
+    const textarea = document.createElement('textarea');
+    textarea.value = url;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    createNotification('Link telah berhasil disalin ke clipboard.');
+  }
 }
 
 function copyToClipboard(element) {
-  var temp = document.createElement("textarea");
-  temp.value = document.querySelector(element).textContent;
-  document.body.appendChild(temp);
-  temp.select();
-  document.execCommand("copy");
-  document.body.removeChild(temp);
-  alert("Code copied to clipboard!");
+  const textToCopy = document.querySelector(element).textContent;
+  
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      alert("Code copied to clipboard!");
+    }).catch(err => {
+      console.error('Gagal menyalin: ', err);
+    });
+  } else {
+    const temp = document.createElement("textarea");
+    temp.value = textToCopy;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand("copy");
+    document.body.removeChild(temp);
+    alert("Code copied to clipboard!");
+  }
 }
 
 // Handle language change
