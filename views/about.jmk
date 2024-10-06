@@ -1,0 +1,14 @@
+<main class="container mx-auto min-h-screen px-4 py-8 mt-16">
+  <section id="about" class="mb-8">
+    <h1 class="text-3xl font-bold text-white mb-4">AR Hosting</h1>
+    <p class="text-gray-300 leading-relaxed">
+        Welcome to AR Hosting, your number one solution for all things web hosting, cloud services, and dedicated servers. We're dedicated to providing you the best of web hosting, with a focus on reliability, customer support, and affordability.
+    </p>
+    <p class="text-gray-300 leading-relaxed mt-4">
+        Founded in 2023 by Arifzyn, AR Hosting has come a long way from its beginnings in a small home office. When Arifzyn first started out, his passion for providing cutting-edge hosting services drove him to start this business, so that AR Hosting can offer you top-notch services that empower your online presence.
+    </p>
+    <p class="text-gray-300 leading-relaxed mt-4">
+        We hope you enjoy our services as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
+    </p>
+  </section>   
+</main>

@@ -1,98 +1,54 @@
-<<<<<<< HEAD
-# Proyek Anda
+### AR-CDN
 
-Deskripsi singkat tentang proyek ini.
+AR CDN is a robust and flexible file upload service designed for handling various types of files, including images, videos, and audio. Built using TypeScript, this project emphasizes a clean directory structure and ease of use. With simple installation steps and a development server setup, users can quickly integrate file uploading functionality into their applications. The project also encourages community contributions, making it a collaborative effort to enhance and expand its capabilities.
 
-## Struktur Direktori
+## AR - CDN
 
-- `dist/`
+AR CDN is a free source code for uploading files such as images, videos, and audio.
 
-  - `index.js`: Berkas hasil build dari TypeScript.
+# Installation
+1. Clone this repository:
+```bash
+git clone <REPOSITORY_URL>
+```
 
-- `package-lock.json`: Berkas kunci dependensi npm.
+2. Navigate to the project directory:
+```bash
+cd <PROJECT_NAME>
+git clone https://github.com/Arifzyn19/AR-CDN
+```
 
-- `package.json`: Berkas konfigurasi npm yang mencantumkan dependensi dan skrip proyek.
+3. Navigate to the project directory:
+```bash
+cd AR-CDN
+```
 
-- `public/`
+4. Install dependencies:
+```bash
+npm install
+```
 
-  - `api/`
+## Usage
 
-    - `openapi.json`: Berkas dokumentasi OpenAPI.
+1. Start the development server:
+```bash
+npm start
+```
 
-  - `assets/`
-    - `script.js`: Berkas JavaScript untuk halaman web.
-    - `style.css`: Berkas CSS untuk halaman web.
-
-- `src/`
-
-  - `index.ts`: Berkas sumber utama TypeScript.
-
-- `tsconfig.json`: Konfigurasi TypeScript.
-
-- `uploads/`
-
-  - `Dwp5Rs01.svg`: Berkas SVG yang diunggah.
-  - `QRCODE-WDP-1726314320-FEVGYLF5PB4ZWT6.png`: Berkas PNG yang diunggah.
-  - `ms-icon-310x310 (1).png`: Berkas PNG ikon.
-
-- `views/`
-  - `docs.jmk`: Berkas template untuk dokumen.
-  - `index.jmk`: Berkas template untuk halaman utama.
-  - `layouts/`
-    - `main.jmk`: Berkas template layout utama.
-  - `partials/`
-    - `footer.jmk`: Berkas template untuk footer.
-    - `header.jmk`: Berkas template untuk header.
-    - `main.jmk`: Berkas template untuk bagian utama.
-  - `result.jmk`: Berkas template untuk hasil.
-=======
-## AR - CDN 
-AR CDN Adalah source code gratis untuk upload file seperti, image, video dan audio.
->>>>>>> 83a636ede5d9ed14da1263dea9b0dacf94d22711
-
-## Instalasi
-
-1. Clone repositori ini:
-   ```bash
-<<<<<<< HEAD
-   git clone <URL_REPOSITORI>
-   ```
-2. Arahkan ke direktori proyek:
-   ```bash
-   cd <NAMA_PROYEK>
-=======
-   git clone https://github.com/Arifzyn19/AR-CDN  
-   ```
-2. Arahkan ke direktori proyek:
-   ```bash
-   cd AR-CDN
->>>>>>> 83a636ede5d9ed14da1263dea9b0dacf94d22711
-   ```
-3. Instal dependensi:
-   ```bash
-   npm install
-   ```
-
-## Penggunaan
-
-1. Jalankan server pengembangan:
-   ```bash
-   npm start
-   ```
-2. Akses aplikasi di http://localhost:3000
+2. Access the application at http://localhost:3000
 
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute, please follow these steps:
 
 1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
+2. Create a new branch (git checkout -b feature-branch).
 3. Make your changes.
-4. Commit your changes (`git commit -m 'Add some feature'`).
-5. Push to the branch (`git push origin feature-branch`).
+4. Commit your changes (git commit -m 'Add some feature').
+5. Push to the branch (git push origin feature-branch).
 6. Open a Pull Request.
 
-For more details, see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+For more details, see the CONTRIBUTING.md file.
 
 ## Thanks To
 
@@ -100,4 +56,4 @@ For more details, see the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.

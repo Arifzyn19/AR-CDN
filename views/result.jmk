@@ -1,6 +1,9 @@
 <main id="result" class="flex items-center justify-center min-h-screen p-6">
   <div class="upload-area bg-gray-700 shadow-2xl border border-gray-600 rounded-lg p-6 w-full max-w-md">
     <h1 class="text-2xl font-bold mb-4 text-white">File Actions</h1>
+    <!-- Container for notifications -->
+    <div id="notification-container"></div>
+    
     <div id="filePreview" class="mb-4">
       {{#if fileUrl}}
         {{#if (includes fileUrl '.mp4')}}
@@ -36,22 +39,3 @@
     </div>
   </div>
 </main>
-
-<script>
-  function copyLink(url) {
-    const textarea = document.createElement('textarea');
-    textarea.value = url;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-
-    const notification = document.createElement('div');
-    notification.className = 'notification bg-green-500 text-white p-2 rounded absolute top-0 right-0 m-4';
-    notification.textContent = 'Link telah berhasil disalin ke clipboard.';
-    document.body.appendChild(notification);
-    setTimeout(() => {
-      notification.style.display = 'none';
-    }, 3000);
-  }
-</script>

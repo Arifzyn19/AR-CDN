@@ -1,51 +1,146 @@
-<div id="swagger-ui"></div>
-<link 
-  rel="stylesheet"
-  href="https://unpkg.com/swagger-ui-dist@4.5.0/swagger-ui.css">
-<script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"></script>
-<script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
-<script>
-  SwaggerUIBundle({
-    url: '/api/openapi.json',
-    dom_id: '#swagger-ui',
-    presets: [
-      SwaggerUIBundle.presets.apis,
-      SwaggerUIStandalonePreset
-    ],
-    layout: 'BaseLayout',
-    deepLinking: true, 
+<header class="bg-gray-800 py-4 shadow-lg">
+  <div class="container mx-auto px-4">
+    <h1 class="text-3xl font-bold text-blue-400">AR Hosting API Documentation</h1>
+  </div>
+</header>
+
+<main class="container mx-auto px-4 py-8">
+  <!-- Introduction -->
+  <section id="introduction" class="mb-8">
+    <h2 class="text-2xl font-semibold text-blue-300">Introduction</h2>
+    <p class="text-gray-300">Welcome to the AR Hosting API documentation. This API allows you to upload files and interact with our hosting platform.</p>
+  </section>
+
+  <!-- Dropdown for Language Selection -->
+  <section id="language-selection" class="mb-8">
+    <h2 class="text-2xl font-semibold text-blue-300">Choose Your Language</h2>
+    <div class="relative inline-block text-left mt-4">
+      <select id="language-dropdown" class="block w-64 px-4 py-2 bg-gray-800 text-gray-300 border border-gray-600 rounded-md shadow-sm">
+        <option value="curl">CURL</option>
+        <option value="fetch">Node.js (Fetch)</option>
+        <option value="axios">Node.js (Axios)</option>
+        <option value="python">Python</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- File Upload API -->
+  <section id="file-upload" class="mb-8">
+    <h2 class="text-2xl font-semibold text-blue-300">File Upload API</h2>
+    <p class="text-gray-300">Use this endpoint to upload files to our platform.</p>
+
+    <!-- Code Blocks for Different Languages -->
+    <div class="bg-gray-800 p-4 rounded-lg shadow-md mt-4">
+      <h3 class="text-lg font-semibold text-green-400">POST /api/upload</h3>
+      <p class="text-gray-400">Uploads a file to the server.</p>
+
+      <!-- Parameters Table -->
+      <h4 class="text-lg font-semibold text-blue-300 mt-4">Parameter:</h4>
+      <div class="overflow-x-auto mt-4">
+        <table class="table-auto w-full text-left text-gray-300">
+          <thead class="bg-gray-700">
+            <tr>
+              <th class="px-4 py-2">Parameter</th>
+              <th class="px-4 py-2">Type</th>
+              <th class="px-4 py-2">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-gray-800">
+              <td class="border px-4 py-2">file</td>
+              <td class="border px-4 py-2">file</td>
+              <td class="border px-4 py-2">The file to upload (multipart/form-data).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="text-lg font-semibold text-blue-300 mt-4">Example Request:</h4>
+
+      <!-- CURL Block -->
+      <div id="code-block-curl" class="code-block mt-4">
+        <pre><code id="curl-code" class="language-bash">curl -X POST https://cdn.arifzyn.tech/api/upload \
+  -F "file=@/path/to/your/file.png"</code></pre>
+        <button class="copy-btn" onclick="copyToClipboard('#curl-code')"><i class="fas fa-copy"></i> Copy Code</button>
+      </div>
+
+      <!-- Fetch Block -->
+      <div id="code-block-fetch" class="code-block mt-4 hidden">
+        <pre><code id="fetch-code" class="language-javascript">const fetch = require("node-fetch");
+const FormData = require("form-data");
+const fs = require("fs");
+
+const form = new FormData();
+const filePath = '/path/to/your/file.png';
+form.append("file", fs.createReadStream(filePath));
+
+fetch('https://cdn.arifzyn.tech/api/upload', {
+  method: 'POST',
+  body: form,
+  headers: form.getHeaders()
+})
+  .then(res => res.json())
+  .then(json => console.log(json))
+  .catch(err => console.error('Error:', err));</code></pre>
+        <button class="copy-btn" onclick="copyToClipboard('#fetch-code')"><i class="fas fa-copy"></i> Copy Code</button>
+      </div>
+
+      <!-- Axios Block -->
+      <div id="code-block-axios" class="code-block mt-4 hidden">
+        <pre><code id="axios-code" class="language-javascript">const axios = require('axios');
+const FormData = require('form-data');
+const fs = require('fs');
+
+const formData = new FormData();
+const filePath = '/path/to/your/file.png';
+formData.append("file", fs.createReadStream(filePath));
+
+axios.post('https://cdn.arifzyn.tech/api/upload', formData, {
+  headers: {
+    ...formData.getHeaders(),
+  },
+})
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
   });
-</script>
-<style> 
-  html {
-    box-sizing: border-box;
-    overflow-y: scroll;
-  }
+</code></pre>
+        <button class="copy-btn" onclick="copyToClipboard('#axios-code')"><i class="fas fa-copy"></i> Copy Code</button>
+      </div>
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
+      <!-- Python Block -->
+      <div id="code-block-python" class="code-block mt-4 hidden">
+        <pre><code id="python-code" class="language-python">import requests
 
-  body {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+url = 'https://cdn.arifzyn.tech/api/upload'
+files = {'file': open('/path/to/your/file.png', 'rb')}
 
-  * {
-    color: white;
-    text-decoration: none;
-  }
+response = requests.post(url, files=files)
+print(response.text)</code></pre>
+        <button class="copy-btn" onclick="copyToClipboard('#python-code')"><i class="fas fa-copy"></i> Copy Code</button>
+      </div>
 
-  .swagger-ui .topbar .download-url-wrapper {
-    display: none;
+      <h4 class="text-lg font-semibold text-blue-300 mt-4">Example Response:</h4>
+
+      <div class="code-block mt-4">
+        <pre><code id="response-code" class="language-json">{
+  "status": 200,
+  "creator": "Arifzyn.",
+  "data": {
+    "originalname": "1728182170206.jpg",
+    "filename": "kr5ojad2.jpg",
+    "mimetype": "image/jpeg",
+    "size": 25336,
+    "url": "https://cdn.arifzyn.tech/f/kr5ojad2.jpg"
   }
-</style>
+}</code></pre>
+        <button class="copy-btn" onclick="copyToClipboard('#response-code')">
+          <i class="fas fa-copy"></i> Copy Response
+        </button>
+      </div>
+
+    </div>
+  </section>
+</main>

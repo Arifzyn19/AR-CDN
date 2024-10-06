@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #1F2937; 
+}
+
+main {
+    flex: 1;
+    padding: 2rem 1rem;
+}
+
+a {
+    color: #4fa9ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #69c0ff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+p {
+    color: #b0b0b0;
+    margin-bottom: 1rem;
+}
+
+.code-block {
+    background-color: #1f2937;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem; 
+    color: #e5e7eb; 
+    font-size: 0.875rem;
+}
+
+.copy-btn {
+    background-color: #4f46e5; 
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: #4338ca; 
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 640px) {
+    main {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    .copy-btn {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 769px) {
+    main {
+        padding: 4rem 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .code-block {
+        font-size: 1rem; /* Bigger font size for larger screens */
+    }
+
+    .copy-btn {
+        width: auto; /* Reset width for larger screens */
+    }
+}

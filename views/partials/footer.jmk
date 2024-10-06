@@ -1,5 +1,7 @@
-<footer class="bg-gray-800 p-4 mt-8">
-    <div class="container mx-auto text-center">
-        <p class="text-white">© 2024 AR Hosting. All rights reserved.</p>
-    </div>
+<footer class="bg-gray-900 p-4 mt-16 text-white text-center">
+    <p>&copy; 2024 AR Hosting. All rights reserved.</p>
+    <p>Follow us on:
+        <a href="https://twitter.com/ArifzynXD" class="text-blue-400 hover:underline">Twitter</a> |
+        <a href="https://github.com/Arifzyn19" class="text-blue-400 hover:underline">GitHub</a>
+    </p>
 </footer>
