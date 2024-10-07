@@ -1,4 +1,4 @@
-<main class="container flex items-center justify-center min-h-screen p-6">
+<main class="flex items-center justify-center min-h-screen p-6">
   <!-- Card with different background color -->
   <div class="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6">
     <h2 class="text-3xl font-bold text-gray-100 text-center mb-6">Upload File</h2>
