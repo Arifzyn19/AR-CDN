@@ -18,25 +18,20 @@ AR CDN is a robust and flexible file upload service designed for handling variou
 AR CDN is a free source code for uploading files such as images, videos, and audio.
 
 # Installation
-1. Clone this repository:
+1. Clone this repository and go to directory:
 ```bash
-git clone <REPOSITORY_URL>
-```
-
-2. Navigate to the project directory:
-```bash
-cd <PROJECT_NAME>
 git clone https://github.com/Arifzyn19/AR-CDN
-```
-
-3. Navigate to the project directory:
-```bash
 cd AR-CDN
 ```
 
 4. Install dependencies:
-```bash
+```bash 
 npm install
+```
+
+5. Build:
+```bash 
+npm run build 
 ```
 
 ## Usage
