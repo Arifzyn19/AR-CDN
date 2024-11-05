@@ -1,41 +1,108 @@
-<main id="result" class="flex items-center justify-center min-h-screen p-6">
-  <div class="upload-area bg-gray-700 shadow-2xl border border-gray-600 rounded-lg p-6 w-full max-w-md">
-    <h1 class="text-2xl font-bold mb-4 text-white">File Actions</h1>
-    <!-- Container for notifications -->
-    <div id="notification-container"></div>
+<main id="result" class="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-6">
+  <div class="upload-area backdrop-blur-lg bg-white/10 shadow-2xl rounded-2xl p-8 w-full max-w-xl transform hover:scale-[1.01] transition-all duration-300">
+    <h1 class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+      File Preview
+    </h1>
     
-    <div id="filePreview" class="mb-4">
+    <!-- Container for notifications -->
+    <div id="notification-container" class="mb-4"></div>
+    
+    <div id="filePreview" class="mb-6">
       {{#if fileUrl}}
-        {{#if (includes fileUrl '.mp4')}}
-          <video src="{{fileUrl}}" class="w-3/4 mx-auto rounded" controls></video>
-        {{else if (includes fileUrl '.jpg')}}
-          <img src="{{fileUrl}}" class="w-3/4 mx-auto rounded" alt="File Preview">
-        {{else if (includes fileUrl '.jpeg')}}
-          <img src="{{fileUrl}}" class="w-3/4 mx-auto rounded" alt="File Preview">
-        {{else if (includes fileUrl '.png')}}
-          <img src="{{fileUrl}}" class="w-3/4 mx-auto rounded" alt="File Preview">
-        {{else if (includes fileUrl '.gif')}}
-          <img src="{{fileUrl}}" class="w-3/4 mx-auto rounded" alt="File Preview">
-        {{else if (includes fileUrl '.mp3')}}
-          <audio src="{{fileUrl}}" controls class="w-3/4 mx-auto rounded"></audio>
-        {{else if (includes fileUrl '.wav')}}
-          <audio src="{{fileUrl}}" controls class="w-3/4 mx-auto rounded"></audio>
-        {{else}}
-          <img src="https://telegra.ph/file/8acbc9aa6ef4a64595c24.jpg" class="w-3/4 mx-auto rounded" alt="Default Preview">
-        {{/if}}
+        <div class="relative group rounded-xl overflow-hidden bg-gray-800/50 p-4 backdrop-blur-sm">
+          {{#if (includes fileUrl '.mp4')}}
+            <video src="{{fileUrl}}" 
+                   class="w-full mx-auto rounded-lg shadow-xl transform group-hover:scale-[1.02] transition-all duration-300" 
+                   controls></video>
+          {{else if (includes fileUrl '.jpg')}}
+            <img src="{{fileUrl}}" 
+                 class="w-full mx-auto rounded-lg shadow-xl transform group-hover:scale-[1.02] transition-all duration-300" 
+                 alt="File Preview">
+          {{else if (includes fileUrl '.jpeg')}}
+            <img src="{{fileUrl}}" 
+                 class="w-full mx-auto rounded-lg shadow-xl transform group-hover:scale-[1.02] transition-all duration-300" 
+                 alt="File Preview">
+          {{else if (includes fileUrl '.png')}}
+            <img src="{{fileUrl}}" 
+                 class="w-full mx-auto rounded-lg shadow-xl transform group-hover:scale-[1.02] transition-all duration-300" 
+                 alt="File Preview">
+          {{else if (includes fileUrl '.gif')}}
+            <img src="{{fileUrl}}" 
+                 class="w-full mx-auto rounded-lg shadow-xl transform group-hover:scale-[1.02] transition-all duration-300" 
+                 alt="File Preview">
+          {{else if (includes fileUrl '.mp3')}}
+            <div class="bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-6 rounded-lg">
+              <audio src="{{fileUrl}}" 
+                     controls 
+                     class="w-full mx-auto"></audio>
+              <div class="w-full h-16 mt-4 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-lg animate-pulse"></div>
+            </div>
+          {{else if (includes fileUrl '.wav')}}
+            <div class="bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-6 rounded-lg">
+              <audio src="{{fileUrl}}" 
+                     controls 
+                     class="w-full mx-auto"></audio>
+              <div class="w-full h-16 mt-4 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-lg animate-pulse"></div>
+            </div>
+          {{else}}
+            <img src="https://telegra.ph/file/8acbc9aa6ef4a64595c24.jpg" 
+                 class="w-full mx-auto rounded-lg shadow-xl transform group-hover:scale-[1.02] transition-all duration-300" 
+                 alt="Default Preview">
+          {{/if}}
+          
+          <!-- File type badge -->
+          <div class="absolute top-6 right-6 bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-white font-medium">
+            {{#if (includes fileUrl '.mp4')}}
+              Video File
+            {{else if (includes fileUrl '.jpg')}}
+              Image File
+            {{else if (includes fileUrl '.jpeg')}}
+              Image File
+            {{else if (includes fileUrl '.png')}}
+              Image File
+            {{else if (includes fileUrl '.gif')}}
+              GIF File
+            {{else if (includes fileUrl '.mp3')}}
+              Audio File
+            {{else if (includes fileUrl '.wav')}}
+              Audio File
+            {{else}}
+              Unknown File
+            {{/if}}
+          </div>
+        </div>
       {{/if}}
     </div>
-    <div class="flex justify-between">
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
       <button 
         onclick="copyLink('{{fileUrl}}')" 
-        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
-        Copy Link
+        class="flex-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-lg font-medium
+               hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300
+               focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900
+               flex items-center justify-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+        <span>Copy Link</span>
       </button>
+      
       <button 
         onclick="window.open('{{fileUrl}}')" 
-        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition ml-2">
-        Open File
+        class="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-lg font-medium
+               hover:from-emerald-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300
+               focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-gray-900
+               flex items-center justify-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+        <span>Open File</span>
       </button>
+    </div>
+
+    <!-- File URL display -->
+    <div class="mt-6 bg-black/30 backdrop-blur-sm rounded-lg p-4 break-all">
+      <p class="text-gray-400 text-sm font-mono">{{fileUrl}}</p>
     </div>
   </div>
 </main>

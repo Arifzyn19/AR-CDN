@@ -40,41 +40,110 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
   <!-- Custom Style -->
   <link rel="stylesheet" href="/css/styles.css">
+  
+  <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #2563eb, #7c3aed);
+        }
+
+        /* Background Animation */
+        .animated-bg {
+            background: linear-gradient(-45deg, #1e1b4b, #312e81, #4338ca, #1e40af);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
 </head> 
 
-<body>
-  <!-- Loader -->
-  <div class="loader-wrapper">
-    <div class="loader"></div>
-  </div>
-  
-  <!-- Nav -->
-  {{> header}}
-
-  <!-- Body -->
-  {{{body}}}
-
-  <!-- Footer -->
-  {{> footer}}
-
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-  $(document).ready(function() {
-    $(".loader-wrapper").fadeIn();
+<body class="animated-bg min-h-screen text-white">
+    <!-- Loader -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
     
-    setTimeout(function() {
-      $(".loader-wrapper").fadeOut("slow", function() {
-        $(this).remove();
-      });
-    }, 3000); 
-  });
-  </script>
-  <!-- Prism.js for Syntax Highlighting -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-  <!-- Custom Script -->
-  <script src="/js/script.js"></script>
-</body>
+    <!-- Nav -->
+    {{> header}}
 
+    <!-- Main Content -->
+    <div class="pt-16"> <!-- Add padding-top to prevent content from going under fixed header -->
+        {{{body}}}
+    </div>
+
+    <!-- Footer -->
+    {{> footer}}
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Modern Loader Animation
+            $(".loader-wrapper").fadeIn();
+            
+            setTimeout(function() {
+                $(".loader-wrapper").fadeOut("slow", function() {
+                    $(this).remove();
+                });
+            }, 1500); // Reduced to 1.5s for better UX
+            
+            // Navbar Scroll Effect
+            let lastScroll = 0;
+            $(window).scroll(function() {
+                const currentScroll = $(this).scrollTop();
+                const header = $("#header");
+                
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    // Scrolling down & past threshold
+                    header.addClass('transform -translate-y-full');
+                } else {
+                    // Scrolling up or at top
+                    header.removeClass('transform -translate-y-full');
+                }
+                
+                if (currentScroll > 50) {
+                    header.addClass('bg-opacity-95 backdrop-blur-md shadow-lg');
+                } else {
+                    header.removeClass('bg-opacity-95 backdrop-blur-md shadow-lg');
+                }
+                
+                lastScroll = currentScroll;
+            });
+        });
+    </script>
+
+    <!-- Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="/js/script.js"></script>
+</body>
 </html>

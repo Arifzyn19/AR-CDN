@@ -1,31 +1,69 @@
-<header class="bg-gray-800 p-4 shadow-md fixed w-full z-10 transition-all duration-300 ease-in-out" id="header">
-    <div class="container mx-auto flex justify-between items-center border-b-2 border-gray-600">
-        <div class="flex items-center">
-            <img src="/images/logo.jpg" alt="Logo" class="w-8 h-8 rounded-full mr-2">
-            <h1 class="text-white text-2xl font-bold transition-transform transform hover:scale-105">AR Hosting</h1>
+<header class="bg-gradient-to-r from-blue-900 to-purple-900 p-4 shadow-lg fixed w-full z-10 transition-all duration-300 ease-in-out backdrop-blur-sm bg-opacity-90" id="header">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <img src="/images/logo.jpg" alt="Logo" class="w-10 h-10 rounded-lg shadow-lg hover:scale-110 transition-transform duration-300">
+            <span class="text-white font-bold text-xl hidden sm:block">Your Brand</span>
         </div>
-        <button id="navbar-toggle" class="text-white md:hidden focus:outline-none transition-transform transform hover:scale-110">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+        <button id="navbar-toggle" class="text-white md:hidden focus:outline-none hover:bg-white/10 p-2 rounded-lg transition-all duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
         </button>
-        <nav id="navbar" class="hidden md:flex md:items-center">
-            <ul class="flex space-x-4">
-                <li><a href="/" class="text-white hover:text-gray-400 transition duration-300 transform hover:scale-110">Home</a></li>
-                <li><a href="/about" class="text-white hover:text-gray-400 transition duration-300 transform hover:scale-110">About</a></li>
-                <li><a href="/docs" class="text-white hover:text-gray-400 transition duration-300 transform hover:scale-110 border-b-2 border-white">API</a></li>
-                <li><a href="/contact" class="text-white hover:text-gray-400 transition duration-300 transform hover:scale-110">Contact</a></li>
+
+        <nav id="navbar" class="hidden md:block">
+            <ul class="flex space-x-6">
+                <li>
+                    <a href="/" class="group relative text-gray-300 hover:text-white py-2 px-3 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        Home
+                        <span class="absolute inset-x-0 bottom-0 h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/about" class="group relative text-gray-300 hover:text-white py-2 px-3 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        About
+                        <span class="absolute inset-x-0 bottom-0 h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/docs" class="group relative text-gray-300 hover:text-white py-2 px-3 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        Docs
+                        <span class="absolute inset-x-0 bottom-0 h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/contacts" class="group relative text-gray-300 hover:text-white py-2 px-3 rounded-lg transition-all duration-300 hover:bg-white/10">
+                        Contacts
+                        <span class="absolute inset-x-0 bottom-0 h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden transition-all duration-300 ease-in-out">
-        <ul class="flex flex-col mt-2 space-y-2">
-            <li><a href="/" class="block text-white hover:text-gray-400 transition duration-300">Home</a></li>
-            <li><a href="/about" class="block text-white hover:text-gray-400 transition duration-300">About</a></li>
-            <li><a href="/docs" class="block text-white hover:text-gray-400 transition duration-300">API</a></li>
-            <li><a href="/contact" class="block text-white hover:text-gray-400 transition duration-300">Contact</a></li>
+        <ul class="flex flex-col mt-4 space-y-2 px-2">
+            <li>
+                <a href="/" class="block text-gray-300 hover:text-white hover:bg-white/10 p-3 rounded-lg transition-all duration-300">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/about" class="block text-gray-300 hover:text-white hover:bg-white/10 p-3 rounded-lg transition-all duration-300">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="/docs" class="block text-gray-300 hover:text-white hover:bg-white/10 p-3 rounded-lg transition-all duration-300">
+                    Docs
+                </a>
+            </li>
+            <li>
+                <a href="/contacts" class="block text-gray-300 hover:text-white hover:bg-white/10 p-3 rounded-lg transition-all duration-300">
+                    Contacts
+                </a>
+            </li>
         </ul>
     </div>
 </header>

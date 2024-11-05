@@ -1,21 +1,40 @@
-<main class="flex items-center justify-center min-h-screen p-6">
-  <!-- Card with different background color -->
-  <div class="w-full max-w-md bg-gray-800 rounded-lg shadow-lg p-6">
-    <h2 class="text-3xl font-bold text-gray-100 text-center mb-6">Upload File</h2>
-    
-    <div id="notification-container" class="mt-4"></div>
-    
-    <!-- Inner area with different background color -->
-    <div id="uploadArea" class="border-2 border-dashed border-teal-500 bg-gray-800 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
-      <h1 class="text-lg font-semibold text-center text-gray-100">Drag and Drop Files Here or Click Below to Select</h1>
-      <button id="chooseFile" class="bg-blue-600 text-white p-2 rounded mt-4 w-full hover:bg-blue-700">Choose File</button>
-      <input type="file" id="input" class="hidden" required />
-      
-      <!-- Drop area with unique background color -->
-      <div id="drop-area" class="mt-4 p-4 border border-gray-500 rounded text-center bg-teal-700">
-        <p class="text-gray-400">Drop your files here...</p>
-      </div>
-      <div id="uploading" class="hidden mt-2 text-gray-400 text-center">Uploading...</div>
+<main class="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-6">
+    <div class="w-full max-w-md backdrop-blur-lg bg-white/10 rounded-2xl shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-300">
+        <h2 class="text-4xl font-bold text-white text-center mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Upload File
+        </h2>
+        
+        <div id="notification-container" class="mt-4"></div>
+        
+        <div id="uploadArea" 
+             class="border-3 border-dashed border-blue-400/50 rounded-xl px-6 py-8 shadow-xl backdrop-blur-sm bg-white/5">
+            <h1 class="text-lg font-medium text-center text-gray-200">
+                Drag and Drop Files Here
+            </h1>
+            
+            <button id="chooseFile" 
+                    class="mt-6 w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-4 rounded-lg font-medium
+                    hover:from-blue-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 
+                    focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900">
+                Choose File
+            </button>
+            
+            <input type="file" id="input" class="hidden" required />
+            
+            <div id="drop-area" 
+                 class="mt-6 p-6 border border-blue-400/30 rounded-lg text-center bg-blue-900/20 
+                 hover:bg-blue-900/30 transition-colors duration-300">
+                <p class="text-gray-300">Drop your files here...</p>
+            </div>
+            
+            <div id="uploading" 
+                 class="hidden mt-4 text-gray-300 text-center flex items-center justify-center space-x-2">
+                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Uploading...</span>
+            </div>
+        </div>
     </div>
-  </div>
 </main>
