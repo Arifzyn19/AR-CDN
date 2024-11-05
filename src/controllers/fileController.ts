@@ -61,7 +61,7 @@ export const getData = (req: Request, res: Response) => {
     });
   } else {
     res.status(404).send("File not found");
-  };
+  }
 };
 
 export const apiUpload = (req: Request, res: Response) => {
@@ -69,7 +69,7 @@ export const apiUpload = (req: Request, res: Response) => {
     return res.status(400).json({ error: "No file uploaded" });
   }
 
-  const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+  const protocol = req.headers["x-forwarded-proto"] || req.protocol;
 
   res.json({
     status: 200,
@@ -82,4 +82,4 @@ export const apiUpload = (req: Request, res: Response) => {
       url: `${protocol}://${req.get("host")}/f/${req.file.filename}`,
     },
   });
-}; 
+};

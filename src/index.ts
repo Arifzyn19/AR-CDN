@@ -15,15 +15,18 @@ const hbs = engine({
   partialsDir: path.join(__dirname, "../views/partials"),
 });
 
-Handlebars.registerHelper("includes", function (str: string, substring: string) {
-  return str.includes(substring);
-});
+Handlebars.registerHelper(
+  "includes",
+  function (str: string, substring: string) {
+    return str.includes(substring);
+  },
+);
 
 app.set("json spaces", 2);
 app.set("trust proxy", 1);
 app.use(express.json());
 app.use(cors());
-app.use(morgan('dev'))
+app.use(morgan("dev"));
 
 app.engine("jmk", hbs);
 app.set("view engine", "jmk");
@@ -31,6 +34,7 @@ app.set("views", path.join(__dirname, "../views"));
 
 app.use("/f", express.static(path.join(__dirname, "../uploads")));
 app.use(express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../node_modules")));
 
 app.use(fileRouter);
 

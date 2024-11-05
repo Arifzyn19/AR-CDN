@@ -4,19 +4,24 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "build:css": " npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/styles.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@preline/file-upload": "^2.5.0",
     "cors": "^2.8.5",
     "dropify": "^0.2.2",
+    "dropzone": "^6.0.0-beta.2",
     "express": "^4.21.0",
     "express-handlebars": "^8.0.1",
+    "lodash": "^4.17.21",
     "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "preline": "^2.5.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
@@ -24,7 +29,9 @@
     "@types/morgan": "^1.9.9",
     "@types/multer": "^1.4.12",
     "@types/node": "^22.5.5",
-    "tailwindcss": "^3.4.13",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2"
   }

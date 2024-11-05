@@ -1,40 +1,88 @@
-<main class="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-6">
-    <div class="w-full max-w-md backdrop-blur-lg bg-white/10 rounded-2xl shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-300">
-        <h2 class="text-4xl font-bold text-white text-center mb-8 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Upload File
-        </h2>
-        
-        <div id="notification-container" class="mt-4"></div>
-        
-        <div id="uploadArea" 
-             class="border-3 border-dashed border-blue-400/50 rounded-xl px-6 py-8 shadow-xl backdrop-blur-sm bg-white/5">
-            <h1 class="text-lg font-medium text-center text-gray-200">
-                Drag and Drop Files Here
-            </h1>
-            
-            <button id="chooseFile" 
-                    class="mt-6 w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-4 rounded-lg font-medium
-                    hover:from-blue-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-300 
-                    focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-gray-900">
-                Choose File
-            </button>
-            
-            <input type="file" id="input" class="hidden" required />
-            
-            <div id="drop-area" 
-                 class="mt-6 p-6 border border-blue-400/30 rounded-lg text-center bg-blue-900/20 
-                 hover:bg-blue-900/30 transition-colors duration-300">
-                <p class="text-gray-300">Drop your files here...</p>
+<main class="flex items-center justify-center min-h-screen p-4">
+  <div class="w-full max-w-md backdrop-blur-lg bg-white/10 rounded-2xl shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-300">
+    <h2 class="text-4xl font-bold text-white text-center mb-8">Upload File</h2>
+
+    <div id="notification" class="hidden mb-4 p-4 rounded-lg"></div>
+
+    <form 
+      action="/api/upload" 
+      class="dropzone" 
+      id="myDropzone" 
+      enctype="multipart/form-data"
+      style="border: 2px dashed rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.1);"
+    >
+      <div class="dz-message text-center">
+        <div class="relative cursor-pointer bg-white/5 border-dashed border-gray-300/50 rounded-xl p-8 transition-all">
+          <div class="space-y-4">
+            <svg class="w-16 h-16 mx-auto text-gray-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+
+            <div class="text-sm text-gray-200">
+              <span class="font-medium text-blue-400 hover:text-blue-500">Click to upload</span>
+              or drag and drop
             </div>
-            
-            <div id="uploading" 
-                 class="hidden mt-4 text-gray-300 text-center flex items-center justify-center space-x-2">
-                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span>Uploading...</span>
-            </div>
+
+            <p class="text-xs text-gray-400">
+              Maximum file size: 2MB
+            </p>
+          </div>
         </div>
+      </div>
+    </form>
+
+    <div id="uploading" 
+         class="hidden mt-4 text-gray-300 text-center flex items-center justify-center space-x-2">
+        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <span>Uploading...</span>
     </div>
+  </div>
 </main>
+
+<script>
+Dropzone.options.myDropzone = {
+  maxFilesize: 10, 
+  acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf,.mp4", 
+  init: function() {
+    this.on("sending", function(file) {
+      document.getElementById('uploading').classList.remove('hidden');
+    }); 
+
+    this.on("error", function(file, response) {
+      showNotification(response.message || 'An error occurred during upload', 'error');
+      this.removeFile(file);
+      document.getElementById('uploading').classList.add('hidden');
+    });
+
+    this.on("success", function(file, response) {
+      showNotification("Success Upload File..", 'success');
+      setTimeout(() => {
+        window.location.href = `/data/${response.data.filename}`;
+      }, 5000);
+      document.getElementById('uploading').classList.add('hidden');
+    });
+    
+    this.on("complete", function(file) {
+      document.getElementById('uploading').classList.add('hidden');
+    });
+  }
+};
+
+function showNotification(message, type) {
+  const notification = document.getElementById('notification');
+  notification.className = `mb-4 p-4 rounded-lg ${
+    type === 'error' ? 'bg-red-500/10 text-red-200' : 'bg-green-500/10 text-green-200'
+  }`;
+  notification.textContent = message;
+  notification.classList.remove('hidden');
+  
+  setTimeout(() => {
+    notification.classList.add('hidden');
+  }, 5000);
+}
+</script>

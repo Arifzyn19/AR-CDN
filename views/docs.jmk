@@ -1,72 +1,76 @@
-<header class="bg-gray-800 py-4 shadow-lg">
-  <div class="container mx-auto px-4">
-    <h1 class="text-3xl font-bold text-blue-400">AR Hosting API Documentation</h1>
-  </div>
-</header>
 
-<main class="container mx-auto px-4 py-8">
-  <!-- Introduction -->
-  <section id="introduction" class="mb-8">
-    <h2 class="text-2xl font-semibold text-blue-300">Introduction</h2>
-    <p class="text-gray-300">Welcome to the AR Hosting API documentation. This API allows you to upload files and interact with our hosting platform.</p>
-  </section>
+<main class="container mx-auto px-4 py-8 mt-20">
+    {{!-- Introduction Section --}}
+    <section id="introduction" class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-300">Introduction</h2>
+        <p class="text-gray-300 mt-4">
+            Welcome to the AR Hosting API documentation. This API allows you to upload files and interact with our hosting platform.
+        </p>
+    </section>
 
-  <!-- Dropdown for Language Selection -->
-  <section id="language-selection" class="mb-8">
-    <h2 class="text-2xl font-semibold text-blue-300">Choose Your Language</h2>
-    <div class="relative inline-block text-left mt-4">
-      <select id="language-dropdown" class="block w-64 px-4 py-2 bg-gray-800 text-gray-300 border border-gray-600 rounded-md shadow-sm">
-        <option value="curl">CURL</option>
-        <option value="fetch">Node.js (Fetch)</option>
-        <option value="axios">Node.js (Axios)</option>
-        <option value="python">Python</option>
-      </select>
-    </div>
-  </section>
+    {{!-- Language Selection Section --}}
+    <section id="language-selection" class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-300">Choose Your Language</h2>
+        <div class="relative inline-block text-left mt-4">
+            <select id="language-dropdown" 
+                    class="block w-64 px-4 py-2 bg-gray-800 text-gray-300 border border-gray-600 rounded-md shadow-sm 
+                           hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+                <option value="curl">CURL</option>
+                <option value="fetch">Fetch</option>
+                <option value="axios">Axios</option>
+                <option value="python">Python</option>
+            </select>
+        </div>
+    </section>
 
-  <!-- File Upload API -->
-  <section id="file-upload" class="mb-8">
-    <h2 class="text-2xl font-semibold text-blue-300">File Upload API</h2>
-    <p class="text-gray-300">Use this endpoint to upload files to our platform.</p>
+    {{!-- File Upload API Section --}}
+    <section id="file-upload" class="mb-8">
+        <h2 class="text-2xl font-semibold text-blue-300">File Upload API</h2>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-md mt-4">
+            <div class="flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-green-600 text-white rounded-md font-mono">POST</span>
+                <span class="text-gray-300 font-mono">/api/upload</span>
+            </div>
 
-    <!-- Code Blocks for Different Languages -->
-    <div class="bg-gray-800 p-4 rounded-lg shadow-md mt-4">
-      <h3 class="text-lg font-semibold text-green-400">POST /api/upload</h3>
-      <p class="text-gray-400">Uploads a file to the server.</p>
+            {{!-- Parameters Table --}}
+            <div class="mt-6">
+                <h3 class="text-xl font-semibold text-blue-300 mb-4">Parameters</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-gray-300">
+                        <thead class="bg-gray-700">
+                            <tr>
+                                <th class="px-4 py-2 rounded-tl-lg">Parameter</th>
+                                <th class="px-4 py-2">Type</th>
+                                <th class="px-4 py-2 rounded-tr-lg">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-800">
+                                <td class="border-t border-gray-700 px-4 py-2">file</td>
+                                <td class="border-t border-gray-700 px-4 py-2">file</td>
+                                <td class="border-t border-gray-700 px-4 py-2">The file to upload (multipart/form-data)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-      <!-- Parameters Table -->
-      <h4 class="text-lg font-semibold text-blue-300 mt-4">Parameter:</h4>
-      <div class="overflow-x-auto mt-4">
-        <table class="table-auto w-full text-left text-gray-300">
-          <thead class="bg-gray-700">
-            <tr>
-              <th class="px-4 py-2">Parameter</th>
-              <th class="px-4 py-2">Type</th>
-              <th class="px-4 py-2">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="bg-gray-800">
-              <td class="border px-4 py-2">file</td>
-              <td class="border px-4 py-2">file</td>
-              <td class="border px-4 py-2">The file to upload (multipart/form-data).</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h4 class="text-lg font-semibold text-blue-300 mt-4">Example Request:</h4>
-
-      <!-- CURL Block -->
-      <div id="code-block-curl" class="code-block mt-4">
-        <pre><code id="curl-code" class="language-bash">curl -X POST https://cdn.arifzyn.tech/api/upload \
+            {{!-- Code Examples --}}
+            <div class="mt-6">
+                <h3 class="text-xl font-semibold text-blue-300 mb-4">Example Request</h3>
+                
+                {{!-- CURL Example --}}
+                <div id="code-block-curl" class="code-block mt-4">
+                    <pre><code class="language-bash">curl -X POST https://cdn.arifzyn.tech/api/upload \
   -F "file=@/path/to/your/file.png"</code></pre>
-        <button class="copy-btn" onclick="copyToClipboard('#curl-code')"><i class="fas fa-copy"></i> Copy Code</button>
-      </div>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
 
-      <!-- Fetch Block -->
-      <div id="code-block-fetch" class="code-block mt-4 hidden">
-        <pre><code id="fetch-code" class="language-javascript">const fetch = require("node-fetch");
+                {{!-- Fetch Example --}}
+                <div id="code-block-fetch" class="code-block mt-4 hidden">
+                    <pre><code class="language-javascript">const fetch = require("node-fetch");
 const FormData = require("form-data");
 const fs = require("fs");
 
@@ -82,12 +86,14 @@ fetch('https://cdn.arifzyn.tech/api/upload', {
   .then(res => res.json())
   .then(json => console.log(json))
   .catch(err => console.error('Error:', err));</code></pre>
-        <button class="copy-btn" onclick="copyToClipboard('#fetch-code')"><i class="fas fa-copy"></i> Copy Code</button>
-      </div>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
 
-      <!-- Axios Block -->
-      <div id="code-block-axios" class="code-block mt-4 hidden">
-        <pre><code id="axios-code" class="language-javascript">const axios = require('axios');
+                {{!-- Axios Example --}}
+                <div id="code-block-axios" class="code-block mt-4 hidden">
+                    <pre><code class="language-javascript">const axios = require('axios');
 const FormData = require('form-data');
 const fs = require('fs');
 
@@ -105,27 +111,32 @@ axios.post('https://cdn.arifzyn.tech/api/upload', formData, {
   })
   .catch(error => {
     console.error('Error:', error);
-  });
-</code></pre>
-        <button class="copy-btn" onclick="copyToClipboard('#axios-code')"><i class="fas fa-copy"></i> Copy Code</button>
-      </div>
+  });</code></pre>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
 
-      <!-- Python Block -->
-      <div id="code-block-python" class="code-block mt-4 hidden">
-        <pre><code id="python-code" class="language-python">import requests
+                {{!-- Python Example --}}
+                <div id="code-block-python" class="code-block mt-4 hidden">
+                    <pre><code class="language-python">import requests
 
 url = 'https://cdn.arifzyn.tech/api/upload'
 files = {'file': open('/path/to/your/file.png', 'rb')}
 
 response = requests.post(url, files=files)
 print(response.text)</code></pre>
-        <button class="copy-btn" onclick="copyToClipboard('#python-code')"><i class="fas fa-copy"></i> Copy Code</button>
-      </div>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                        <i class="fas fa-copy"></i> Copy Code
+                    </button>
+                </div>
+            </div>
 
-      <h4 class="text-lg font-semibold text-blue-300 mt-4">Example Response:</h4>
-
-      <div class="code-block mt-4">
-        <pre><code id="response-code" class="language-json">{
+            {{!-- Response Example --}}
+            <div class="mt-6">
+                <h3 class="text-xl font-semibold text-blue-300 mb-4">Example Response</h3>
+                <div class="code-block"> 
+                    <pre><code class="language-json">{
   "status": 200,
   "creator": "Arifzyn.",
   "data": {
@@ -136,11 +147,11 @@ print(response.text)</code></pre>
     "url": "https://cdn.arifzyn.tech/f/kr5ojad2.jpg"
   }
 }</code></pre>
-        <button class="copy-btn" onclick="copyToClipboard('#response-code')">
-          <i class="fas fa-copy"></i> Copy Response
-        </button>
-      </div>
-
-    </div>
-  </section>
+                    <button class="copy-btn" onclick="copyToClipboard(this)">
+                        <i class="fas fa-copy"></i> Copy Response
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>

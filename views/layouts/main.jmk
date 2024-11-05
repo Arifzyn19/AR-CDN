@@ -31,15 +31,13 @@
   <link rel="shortcut icon" href="/images/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
   <link rel="manifest" href="/images/site.webmanifest" />
-
-  <!-- Tailwind CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Font Awesome for Icons -->
+   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <!-- Prism.js CSS for Syntax Highlighting -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-  <!-- Custom Style -->
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/basic.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
   
   <style>
         html {
@@ -105,39 +103,14 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Modern Loader Animation
             $(".loader-wrapper").fadeIn();
             
             setTimeout(function() {
                 $(".loader-wrapper").fadeOut("slow", function() {
                     $(this).remove();
                 });
-            }, 1500); // Reduced to 1.5s for better UX
-            
-            // Navbar Scroll Effect
-            let lastScroll = 0;
-            $(window).scroll(function() {
-                const currentScroll = $(this).scrollTop();
-                const header = $("#header");
-                
-                if (currentScroll > lastScroll && currentScroll > 100) {
-                    // Scrolling down & past threshold
-                    header.addClass('transform -translate-y-full');
-                } else {
-                    // Scrolling up or at top
-                    header.removeClass('transform -translate-y-full');
-                }
-                
-                if (currentScroll > 50) {
-                    header.addClass('bg-opacity-95 backdrop-blur-md shadow-lg');
-                } else {
-                    header.removeClass('bg-opacity-95 backdrop-blur-md shadow-lg');
-                }
-                
-                lastScroll = currentScroll;
-            });
-        });
-    </script>
+            }, 1500); 
+    </script> 
 
     <!-- Syntax Highlighting -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
