@@ -1,4 +1,4 @@
-<main class="flex items-center justify-center min-h-screen p-4">
+<div class="flex items-center justify-center min-h-screen">
   <div class="w-full max-w-md backdrop-blur-lg bg-white/10 rounded-2xl shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-300">
     <h2 class="text-4xl font-bold text-white text-center mb-8">Upload File</h2>
 
@@ -42,11 +42,11 @@
         <span>Uploading...</span>
     </div>
   </div>
-</main>
+</div>
 
 <script>
 Dropzone.options.myDropzone = {
-  maxFilesize: 10, 
+  maxFilesize: 50, 
   acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf,.mp4", 
   init: function() {
     this.on("sending", function(file) {

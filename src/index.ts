@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import path from "path";
+import fs from "fs"; 
 import { engine } from "express-handlebars";
 import Handlebars from "handlebars";
 import cors from "cors";
@@ -37,6 +38,31 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.static(path.join(__dirname, "../node_modules")));
 
 app.use(fileRouter);
+
+app.get("/list-files", async (req: Request, res: Response) => {
+  const folderPath = path.join(__dirname, "../uploads");
+
+  try {
+    const files = await fs.promises.readdir(folderPath);
+
+    res.status(200).json({
+      message: "File list fetched successfully",
+      files,
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({
+        message: "Failed to fetch file list",
+        error: error.message,
+      });
+    } else {
+      res.status(500).json({
+        message: "Failed to fetch file list",
+        error: "An unknown error occurred",
+      });
+    }
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
