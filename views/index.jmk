@@ -1,88 +1,106 @@
-<div class="flex items-center justify-center min-h-screen">
-  <div class="w-full max-w-md backdrop-blur-lg bg-white/10 rounded-2xl shadow-2xl p-8 transform hover:scale-[1.02] transition-all duration-300">
-    <h2 class="text-4xl font-bold text-white text-center mb-8">Upload File</h2>
-
-    <div id="notification" class="hidden mb-4 p-4 rounded-lg"></div>
-
-    <form 
-      action="/api/upload" 
-      class="dropzone" 
-      id="myDropzone" 
-      enctype="multipart/form-data"
-      style="border: 2px dashed rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.1);"
-    >
-      <div class="dz-message text-center">
-        <div class="relative cursor-pointer bg-white/5 border-dashed border-gray-300/50 rounded-xl p-8 transition-all">
-          <div class="space-y-4">
-            <svg class="w-16 h-16 mx-auto text-gray-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="17 8 12 3 7 8"/>
-              <line x1="12" y1="3" x2="12" y2="15"/>
+<div class="max-w-4xl mx-auto">
+    <!-- Header Section with animated element -->
+    <div class="text-center mb-12">
+        <div class="inline-block mb-4">
+            <svg class="h-20 w-20 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
             </svg>
-
-            <div class="text-sm text-gray-200">
-              <span class="font-medium text-blue-400 hover:text-blue-500">Click to upload</span>
-              or drag and drop
-            </div>
-
-            <p class="text-xs text-gray-400">
-              Maximum file size: 2MB
-            </p>
-          </div>
         </div>
-      </div>
-    </form>
-
-    <div id="uploading" 
-         class="hidden mt-4 text-gray-300 text-center flex items-center justify-center space-x-2">
-        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        <span>Uploading...</span>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-4">File Uploader</h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Upload your files easily and securely to our cloud storage platform</p>
     </div>
-  </div>
-</div>
 
-<script>
-Dropzone.options.myDropzone = {
-  maxFilesize: 50, 
-  acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf,.mp4", 
-  init: function() {
-    this.on("sending", function(file) {
-      document.getElementById('uploading').classList.remove('hidden');
-    }); 
+    <!-- Stats Section -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="glass-effect rounded-xl shadow-glass hover:shadow-glass-hover p-6 text-center transform transition hover:-translate-y-1">
+            <div class="text-3xl font-bold text-indigo-600 mb-2">Fast</div>
+            <p class="text-gray-600">High-speed uploads with global CDN distribution</p>
+        </div>
+        <div class="glass-effect rounded-xl shadow-glass hover:shadow-glass-hover p-6 text-center transform transition hover:-translate-y-1">
+            <div class="text-3xl font-bold text-indigo-600 mb-2">Secure</div>
+            <p class="text-gray-600">End-to-end encryption and advanced security</p>
+        </div>
+        <div class="glass-effect rounded-xl shadow-glass hover:shadow-glass-hover p-6 text-center transform transition hover:-translate-y-1">
+            <div class="text-3xl font-bold text-indigo-600 mb-2">Simple</div>
+            <p class="text-gray-600">Drag & drop interface with instant sharing</p>
+        </div>
+    </div>
 
-    this.on("error", function(file, response) {
-      showNotification(response.message || 'An error occurred during upload', 'error');
-      this.removeFile(file);
-      document.getElementById('uploading').classList.add('hidden');
-    });
-
-    this.on("success", function(file, response) {
-      showNotification("Success Upload File..", 'success');
-      setTimeout(() => {
-        window.location.href = `/data/${response.data.filename}`;
-      }, 5000);
-      document.getElementById('uploading').classList.add('hidden');
-    });
+    <!-- Upload Card with glass effect -->
+    <div class="glass-effect rounded-2xl shadow-glass overflow-hidden transform transition-all">
+        <div class="p-8">
+            <!-- Tabs for upload options -->
+            <div class="flex flex-wrap mb-8 border-b border-gray-200">
+                <button class="px-6 py-3 font-medium text-indigo-600 border-b-2 border-indigo-600 focus:outline-none">
+                    Upload Files
+                </button>
+                <button class="px-6 py-3 font-medium text-gray-500 hover:text-indigo-500 focus:outline-none">
+                    Browse Files
+                </button>
+            </div>
+            
+            <!-- Dropzone Area -->
+            <form action="/api/upload" class="dropzone" id="upload-dropzone">
+                <div class="dz-message" data-dz-message>
+                    <div class="text-center">
+                        <!-- Animated Upload Icon -->
+                        <div class="mb-4">
+                            <svg class="mx-auto h-16 w-16 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-medium text-gray-900 mb-1">
+                            Drag files here or click to upload
+                        </h3>
+                        <p class="text-sm text-gray-600">
+                            Supported formats: PNG, JPG, JPEG, PDF, DOC, DOCX
+                        </p>
+                        <p class="text-xs text-gray-400 mt-2">
+                            Maximum file size: 50MB
+                        </p>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Upload instructions and info -->
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                <div class="p-4">
+                    <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-500 flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0l-4 4m4-4v12"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-medium">Upload</h4>
+                    <p class="text-sm text-gray-500">Drag or select your files</p>
+                </div>
+                <div class="p-4">
+                    <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-500 flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-medium">Process</h4>
+                    <p class="text-sm text-gray-500">Files are securely processed</p>
+                </div>
+                <div class="p-4">
+                    <div class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-500 flex items-center justify-center mx-auto mb-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-medium">Share</h4>
+                    <p class="text-sm text-gray-500">Get links to share instantly</p>
+                </div>
+            </div>
+        </div>
+    </div>
     
-    this.on("complete", function(file) {
-      document.getElementById('uploading').classList.add('hidden');
-    });
-  }
-};
-
-function showNotification(message, type) {
-  const notification = document.getElementById('notification');
-  notification.className = `mb-4 p-4 rounded-lg ${
-    type === 'error' ? 'bg-red-500/10 text-red-200' : 'bg-green-500/10 text-green-200'
-  }`;
-  notification.textContent = message;
-  notification.classList.remove('hidden');
-  
-  setTimeout(() => {
-    notification.classList.add('hidden');
-  }, 5000);
-}
-</script>
+    <!-- 
+    <div class="mt-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Recent Uploads</h2>
+        <div class="glass-effect rounded-xl shadow-glass p-6">
+            <p class="text-gray-500 text-center py-8">Your recent uploads will appear here</p>
+        </div>
+    </div>
+    -->
+</div>

@@ -1,20 +1,156 @@
-<main class="container mx-auto p-8 mt-16">
-    <h1 class="text-3xl font-bold text-white-800 mb-4">Contact Us</h1>
-    <p class="text-white-600 mb-4">We would love to hear from you! Please fill out the form below to get in touch with us.</p>
+<div class="max-w-4xl mx-auto">
+    <div class="text-center mb-8">
+        <div class="inline-block mb-4">
+            <i data-lucide="mail" class="h-16 w-16 text-indigo-500"></i>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-2">Contact Us</h1>
+        <p class="text-lg text-gray-600">We'd love to hear from you</p>
+    </div>
 
-    <form action="/send-message" method="POST" class="bg-gray-100 p-6 rounded-lg shadow-md max-w-lg mx-auto">
-        <div class="mb-4">
-            <label for="name" class="block text-gray-700 font-bold mb-2">Name</label>
-            <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Your Name" required>
+    <div class="glass-effect rounded-2xl shadow-glass hover:shadow-glass-hover overflow-hidden transform transition-all duration-300">
+        <div class="p-8">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+                <div class="md:col-span-2 space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                        <p class="text-gray-700">
+                            Have questions about our services or need help with your account? 
+                            Fill out the form or use one of our contact methods below.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-lucide="map-pin" class="h-6 w-6 text-indigo-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-lg font-medium text-gray-900">Our Office</h3>
+                                <p class="text-gray-700">
+                                    123 Tech Avenue<br>
+                                    San Francisco, CA 94107<br>
+                                    United States
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-lucide="phone" class="h-6 w-6 text-indigo-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-lg font-medium text-gray-900">Phone</h3>
+                                <p class="text-gray-700">
+                                    +1 (555) 123-4567<br>
+                                    Monday-Friday, 9AM-6PM PST
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-lucide="mail" class="h-6 w-6 text-indigo-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-lg font-medium text-gray-900">Email</h3>
+                                <p class="text-gray-700">
+                                    General: info@example.com<br>
+                                    Support: support@example.com<br>
+                                    Sales: sales@example.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 transition-colors">
+                                <i data-lucide="twitter" class="h-6 w-6"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 transition-colors">
+                                <i data-lucide="facebook" class="h-6 w-6"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 transition-colors">
+                                <i data-lucide="instagram" class="h-6 w-6"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-indigo-600 transition-colors">
+                                <i data-lucide="linkedin" class="h-6 w-6"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-3">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="first_name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                <input type="text" id="first_name" name="first_name" class="block w-full px-4 py-3 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your first name">
+                            </div>
+                            
+                            <div>
+                                <label for="last_name" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <input type="text" id="last_name" name="last_name" class="block w-full px-4 py-3 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your last name">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" name="email" class="block w-full px-4 py-3 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your email address">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" class="block w-full px-4 py-3 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="What is this regarding?">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" class="block w-full px-4 py-3 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" placeholder="How can we help you?"></textarea>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="newsletter" name="newsletter" type="checkbox" class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="newsletter" class="font-medium text-gray-700">Subscribe to our newsletter</label>
+                                <p class="text-gray-500">Get the latest updates and news from our team.</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-md hover:shadow-lg transform transition-all hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <i data-lucide="send" class="h-5 w-5 mr-2"></i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="mb-4">
-            <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-            <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Your Email" required>
+    </div>
+    
+    <div class="mt-12 mb-8">
+        <div class="glass-effect rounded-xl shadow-glass p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="glass-effect border border-indigo-100/30 rounded-lg p-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">How long does it take to get a response?</h3>
+                    <p class="text-gray-700">We typically respond to all inquiries within 24 hours during business days.</p>
+                </div>
+                
+                <div class="glass-effect border border-indigo-100/30 rounded-lg p-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Do you offer refunds?</h3>
+                    <p class="text-gray-700">Yes, we offer a 30-day money-back guarantee on all our premium plans.</p>
+                </div>
+                
+                <div class="glass-effect border border-indigo-100/30 rounded-lg p-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">How do I report a technical issue?</h3>
+                    <p class="text-gray-700">The fastest way to get technical help is to email support@example.com with details about the issue you're experiencing.</p>
+                </div>
+            </div>
         </div>
-        <div class="mb-4">
-            <label for="message" class="block text-gray-700 font-bold mb-2">Message</label>
-            <textarea id="message" name="message" rows="5" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Your Message" required></textarea>
-        </div>
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500">Send Message</button>
-    </form> 
-</main>
+    </div>
+</div>

@@ -1,85 +1,190 @@
 import { Request, Response } from "express";
-import multer from "multer";
-import path from "path";
-import fs from "fs";
+import { fileService } from "../services/fileService";
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const uploadDir = path.join(__dirname, "../../uploads");
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir);
-    }
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    const randomString = Math.random().toString(36).substring(2, 10);
-    const ext = path.extname(file.originalname);
-    cb(null, `${randomString}${ext}`);
-  },
-});
-
-const upload = multer({
-  storage,
-  limits: { fileSize: 50 * 1024 * 1024 },
-});
-
-export const uploadFile = upload.single("file");
-
-export const getHome = (req: Request, res: Response) => {
-  res.render("index", { title: "Home | AR CDN" });
-};
-
-export const getAbout = (req: Request, res: Response) => {
-  res.render("about", { title: "About | AR CDN" });
-};
-
-export const getContact = (req: Request, res: Response) => {
-  res.render("contact", { title: "Contact | AR CDN" });
-};
-
-export const getDocs = (req: Request, res: Response) => {
-  res.render("docs", { title: "Docs | AR CDN" });
-};
-
-export const handleUpload = (req: Request, res: Response) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "No file uploaded" });
-  }
-
-  res.redirect(`/data/${req.file.filename}`);
-};
-
-export const getData = (req: Request, res: Response) => {
-  const { filename } = req.params;
-  const filePath = path.join(__dirname, "../../uploads", filename);
-
-  if (fs.existsSync(filePath)) {
-    res.render("result", {
-      title: "File Result | AR CDN",
-      fileUrl: `${req.protocol}://${req.get("host")}/f/${filename}`,
-      filename,
+/**
+ * Handle file upload and redirect to result page
+ */
+export const handleUpload = (req: Request, res: Response): void => {
+  if (
+    !req.file &&
+    (!req.files || (Array.isArray(req.files) && req.files.length === 0))
+  ) {
+    return res.status(400).render("error", {
+      title: "Error | AR CDN",
+      message: "No file uploaded",
+      statusCode: 400,
     });
-  } else {
-    res.status(404).send("File not found");
+  }
+
+  // Handle single file upload
+  if (req.file) {
+    res.redirect(`/data/${req.file.filename}`);
+    return;
+  }
+
+  // Handle multiple files upload
+  if (Array.isArray(req.files) && req.files.length > 0) {
+    // Redirect to the first file for now
+    // In a real app, you might want to create a page that shows all uploaded files
+    res.redirect(`/data/${req.files[0].filename}`);
+    return;
+  }
+
+  // Should never reach here, but just in case
+  res.status(500).render("error", {
+    title: "Error | AR CDN",
+    message: "Something went wrong during upload",
+    statusCode: 500,
+  });
+};
+
+/**
+ * List all files
+ */
+export const listFiles = (req: Request, res: Response): void => {
+  try {
+    const files = fileService.getFileList();
+
+    res.render("files", {
+      title: "Files | AR CDN",
+      files,
+      activeNav: "files",
+    });
+  } catch (error) {
+    res.status(500).render("error", {
+      title: "Error | AR CDN",
+      message: "Failed to fetch file list",
+      statusCode: 500,
+    });
   }
 };
 
-export const apiUpload = (req: Request, res: Response) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "No file uploaded" });
+/**
+ * Delete a file
+ */
+export const deleteFile = (req: Request, res: Response): void => {
+  const { filename } = req.params;
+
+  const success = fileService.deleteFile(filename);
+
+  if (success) {
+    res.redirect("/list-files");
+  } else {
+    res.status(404).render("error", {
+      title: "Error | AR CDN",
+      message: "File not found or could not be deleted",
+      statusCode: 404,
+    });
+  }
+};
+
+/**
+ * API: Upload file
+ */
+export const apiUpload = (req: Request, res: Response): void => {
+  if (
+    !req.file &&
+    (!req.files || (Array.isArray(req.files) && req.files.length === 0))
+  ) {
+    res.status(400).json({
+      status: 400,
+      message: "No file uploaded",
+    });
   }
 
   const protocol = req.headers["x-forwarded-proto"] || req.protocol;
 
-  res.json({
-    status: 200,
-    creator: "Arifzyn.",
-    data: {
-      originalname: req.file.originalname,
-      filename: req.file.filename,
-      mimetype: req.file.mimetype,
-      size: req.file.size,
-      url: `${protocol}://${req.get("host")}/f/${req.file.filename}`,
-    },
+  // Handle single file upload
+  if (req.file) {
+    res.json({
+      status: 200,
+      creator: "Arifzyn.",
+      data: {
+        originalname: req.file.originalname,
+        filename: req.file.filename,
+        mimetype: req.file.mimetype,
+        size: req.file.size,
+        url: `${protocol}://${req.get("host")}/f/${req.file.filename}`,
+      },
+    });
+    return;
+  }
+
+  // Handle multiple files upload
+  if (Array.isArray(req.files) && req.files.length > 0) {
+    const filesData = req.files.map((file) => ({
+      originalname: file.originalname,
+      filename: file.filename,
+      mimetype: file.mimetype,
+      size: file.size,
+      url: `${protocol}://${req.get("host")}/f/${file.filename}`,
+    }));
+
+    res.json({
+      status: 200,
+      creator: "Arifzyn.",
+      data: filesData,
+    });
+    return;
+  }
+
+  // Should never reach here, but just in case
+  res.status(500).json({
+    status: 500,
+    message: "Something went wrong during upload",
   });
+};
+
+/**
+ * API: List all files
+ */
+export const apiListFiles = (req: Request, res: Response): void => {
+  try {
+    const files = fileService.getFileList();
+    const protocol = req.headers["x-forwarded-proto"] || req.protocol;
+
+    // Add URL to each file
+    const filesWithUrls = files.map((file) => ({
+      ...file,
+      url: `${protocol}://${req.get("host")}/f/${file.filename}`,
+    }));
+
+    res.status(200).json({
+      status: 200,
+      message: "File list fetched successfully",
+      creator: "Arifzyn.",
+      data: filesWithUrls,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: 500,
+      message: "Failed to fetch file list",
+      error:
+        error instanceof Error ? error.message : "An unknown error occurred",
+    });
+  }
+};
+
+/**
+ * API: Delete a file
+ */
+export const apiDeleteFile = (req: Request, res: Response): void => {
+  const { filename } = req.params;
+
+  const success = fileService.deleteFile(filename);
+
+  if (success) {
+    res.status(200).json({
+      status: 200,
+      message: "File deleted successfully",
+      creator: "Arifzyn.",
+      data: { filename },
+    });
+  } else {
+    res.status(404).json({
+      status: 404,
+      message: "File not found or could not be deleted",
+      creator: "Arifzyn.",
+    });
+  }
 };

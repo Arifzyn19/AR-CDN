@@ -1,14 +1,96 @@
-<main class="container mx-auto min-h-screen px-4 py-8 mt-16">
-  <section id="about" class="mb-8">
-    <h1 class="text-3xl font-bold text-white mb-4">AR Hosting</h1>
-    <p class="text-gray-300 leading-relaxed">
-        Welcome to AR Hosting, your number one solution for all things web hosting, cloud services, and dedicated servers. We're dedicated to providing you the best of web hosting, with a focus on reliability, customer support, and affordability.
-    </p>
-    <p class="text-gray-300 leading-relaxed mt-4">
-        Founded in 2023 by Arifzyn, AR Hosting has come a long way from its beginnings in a small home office. When Arifzyn first started out, his passion for providing cutting-edge hosting services drove him to start this business, so that AR Hosting can offer you top-notch services that empower your online presence.
-    </p>
-    <p class="text-gray-300 leading-relaxed mt-4">
-        We hope you enjoy our services as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.
-    </p>
-  </section>   
-</main>
+<div class="max-w-4xl mx-auto">
+    <div class="text-center mb-8">
+        <div class="inline-block mb-4">
+            <i data-lucide="info" class="h-16 w-16 text-indigo-500"></i>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 mb-2">About Us</h1>
+        <p class="text-lg text-gray-600">Learn more about our service and mission</p>
+    </div>
+
+    <div class="glass-effect rounded-2xl shadow-glass hover:shadow-glass-hover overflow-hidden transform transition-all duration-300">
+        <div class="p-8">
+            <div class="space-y-8">
+                <div class="prose prose-lg mx-auto">
+                    <h2 class="text-2xl font-bold text-gray-900">Our Story</h2>
+                    <p class="text-gray-700">
+                        Founded in 2023, our platform was created to solve the problem of secure and efficient file sharing. 
+                        We believe that sharing files should be simple, fast, and secure for everyone, whether you're a professional 
+                        working remotely or just sharing memories with friends and family.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold text-gray-900 mt-8">Our Mission</h2>
+                    <p class="text-gray-700">
+                        Our mission is to provide a reliable and user-friendly file hosting service that prioritizes 
+                        security, speed, and simplicity. We strive to make file sharing accessible to everyone 
+                        while maintaining the highest standards of data protection and user privacy.
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold text-gray-900 mt-8">What We Offer</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                        <div class="glass-effect p-6 rounded-xl border border-indigo-100/50">
+                            <div class="flex items-center mb-3">
+                                <i data-lucide="shield" class="h-8 w-8 text-indigo-500 mr-3"></i>
+                                <h3 class="text-xl font-semibold text-gray-900">Secure Storage</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                All files are encrypted and stored safely on our secure servers, ensuring your data 
+                                remains protected at all times.
+                            </p>
+                        </div>
+                        
+                        <div class="glass-effect p-6 rounded-xl border border-indigo-100/50">
+                            <div class="flex items-center mb-3">
+                                <i data-lucide="zap" class="h-8 w-8 text-indigo-500 mr-3"></i>
+                                <h3 class="text-xl font-semibold text-gray-900">Fast Delivery</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                Our global CDN ensures your files are delivered quickly to recipients no matter 
+                                where they are located around the world.
+                            </p>
+                        </div>
+                        
+                        <div class="glass-effect p-6 rounded-xl border border-indigo-100/50">
+                            <div class="flex items-center mb-3">
+                                <i data-lucide="smartphone" class="h-8 w-8 text-indigo-500 mr-3"></i>
+                                <h3 class="text-xl font-semibold text-gray-900">Mobile Friendly</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                Access your files from any device with our responsive platform that works 
+                                seamlessly on desktops, tablets, and mobile phones.
+                            </p>
+                        </div>
+                        
+                        <div class="glass-effect p-6 rounded-xl border border-indigo-100/50">
+                            <div class="flex items-center mb-3">
+                                <i data-lucide="settings" class="h-8 w-8 text-indigo-500 mr-3"></i>
+                                <h3 class="text-xl font-semibold text-gray-900">Customizable</h3>
+                            </div>
+                            <p class="text-gray-700">
+                                Set custom expiration dates, password protection, and download limits for your shared files 
+                                to maintain control over your content.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold text-gray-900 mt-8">Our Team</h2>
+                    <p class="text-gray-700">
+                        We are a team of passionate developers, designers, and security experts committed to creating 
+                        the best file sharing experience possible. With backgrounds in cloud infrastructure, UX design, 
+                        and cybersecurity, our diverse team brings together the expertise needed to build a robust and 
+                        user-friendly platform.
+                    </p>
+                </div>
+                
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="/contact" 
+                            class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-md hover:shadow-lg transform transition-all hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <i data-lucide="mail" class="h-5 w-5 mr-2"></i>
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
