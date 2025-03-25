@@ -28,9 +28,7 @@ export const configureServer = (app: express.Application): void => {
     layoutsDir: path.join(__dirname, "../../views/layouts"),
     partialsDir: path.join(__dirname, "../../views/partials"),
     helpers: {
-      // Add year for copyright
       getCurrentYear: () => new Date().getFullYear(),
-      // Convert bytes to human-readable format
       formatFileSize: (bytes: number) => {
         if (bytes < 1024) return bytes + " B";
         else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + " KB";
@@ -38,18 +36,14 @@ export const configureServer = (app: express.Application): void => {
           return (bytes / 1048576).toFixed(2) + " MB";
         else return (bytes / 1073741824).toFixed(2) + " GB";
       },
-      // Check if string includes substring
       includes: (str: string, substring: string) => str.includes(substring),
     },
   });
 
-  // Register Handlebars helpers directly
-  Handlebars.registerHelper(
-    "includes",
-    function (str: string, substring: string) {
-      return str.includes(substring);
-    },
-  );
+  // Register Handlebars helpers
+  Handlebars.registerHelper("includes", (str: string, substring: string) => {
+    return str.includes(substring);
+  });
 
   // Configure view engine
   app.engine("jmk", hbs);

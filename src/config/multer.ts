@@ -12,7 +12,7 @@ const ALLOWED_FILE_TYPES = [
   "image/gif",
   "image/webp",
   "image/svg+xml",
-  // video
+  // Video
   "video/mp4",
   // Documents
   "application/pdf",
@@ -23,6 +23,13 @@ const ALLOWED_FILE_TYPES = [
   // Archives
   "application/zip",
   "application/x-rar-compressed",
+  // Audio
+  "audio/mpeg", // MP3
+  "audio/wav",  // WAV
+  "audio/ogg",  // OGG
+  "audio/aac",  // AAC
+  "audio/flac", // FLAC
+  "audio/webm", // WebM Audio
   // Others
   "text/plain",
   "text/csv",

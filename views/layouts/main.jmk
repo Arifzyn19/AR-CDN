@@ -3,65 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="4qbyhH2ToPSiXmv__k1ozZ1NPyQ33XvjNyRuFagGPak">
     <title>{{title}}</title>
     
     <!-- Meta Content -->
     <meta name="description" content="Upload and manage your files easily with AR Hosting. Enjoy a seamless file management experience.">
-    <meta name="keywords" content="file upload, AR Hosting, AR CDN, cloud storage, file management, online file storage, secure file upload">
+    <meta name="keywords" content="file upload, AR Hosting, AR CDN, cloud storage, file management, online file storage, secure file upload, free file hosting, unlimited file upload, CDN free, fast file sharing, upload file gratis, hosting gratis, file storage service">
     <meta name="author" content="Arifzyn">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="File Upload - AR Hosting">
     <meta property="og:description" content="Upload and manage your files easily with AR Hosting.">
-    <meta property="og:image" content="/images/logo.jpg"> 
-    <meta property="og:url" content="https://cdn.arifzyn.tech">
+    <meta property="og:image" content="https://cdn.arifzyn.site/images/logo.jpg"> 
+    <meta property="og:url" content="https://cdn.arifzyn.site">
     <meta property="og:type" content="website">
     
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="File Upload - AR Hosting">
     <meta name="twitter:description" content="Upload and manage your files easily with AR Hosting.">
-    <meta name="twitter:image" content="/images/logo.jpg">
+    <meta name="twitter:image" content="https://cdn.arifzyn.site/images/logo.jpg">
+     
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/png" href="https://cdn.arifzyn.site/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="https://cdn.arifzyn.site/images/favicon.svg">
+    <link rel="shortcut icon" href="https://cdn.arifzyn.site/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.arifzyn.site/images/apple-touch-icon.png">
+    <link rel="manifest" href="https://cdn.arifzyn.site/images/site.webmanifest">
 
-  <!-- Favicon and Icons -->
-  <link rel="icon" type="image/png" href="/images/favicon-48x48.png" sizes="48x48" />
-  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-  <link rel="shortcut icon" href="/images/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-  <link rel="manifest" href="/images/site.webmanifest" />
-  
-    <link rel="stylesheet" href="/css/styles.css" /> 
-    <link rel="stylesheet" href="/css/costum.css" /> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/basic.min.css" /> 
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/styles.css"> 
+    <link rel="stylesheet" href="/css/costum.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/basic.min.css">
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-T9RFMJL9');
+    </script>
+    <!-- End Google Tag Manager -->
 </head>
 <body class="h-full flex flex-col">
-     <!-- Navbar -->
-    {{> navbar }}  
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9RFMJL9" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Navbar -->
+    {{> navbar }}
 
     <main class="flex-grow max-w-7xl w-full mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <!-- Main Content -->
         {{{body}}}  
     </main>
 
-    <!-- Toast ->>
-    <div id="toast" class="toast">
-      <div class="flex items-center">
-        <svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-        </svg>
-        <span id="toast-message">File uploaded successfully!</span>
-      </div>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <div class="flex items-center">
+            <svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span id="toast-message">File uploaded successfully!</span>
+        </div>
     </div>
 
-    <!--Footer -->
-    {{> footer }}  
+    <!-- Footer -->
+    {{> footer }}
 
     <!-- Scripts -->
     <script src="/js/main.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-      lucide.createIcons();
+        lucide.createIcons();
     </script>
+
 </body>
 </html>
